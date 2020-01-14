@@ -1,0 +1,25 @@
+version: 2.1
+# orbs:
+#   dockerhub: circleci/docker@0.5.20
+jobs:
+  test_client:
+    docker:
+      - image: circleci/node:10
+    environment:
+      - NODE_ENV: development
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run: npm install
+      - save_cache: 
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run: npm test
+  
+workflows:
+  test:
+    jobs:
+      - test_client
+      
