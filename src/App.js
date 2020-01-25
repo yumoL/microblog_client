@@ -10,6 +10,8 @@ import { initUser } from './reducers/userReducer'
 import Blogs from './components/Blogs'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFoundPage from './components/NotFoundPage'
+import Navbar from './components/Navbar'
+import Setting from './components/Setting'
 
 const App = (props) => {
 
@@ -23,8 +25,10 @@ const App = (props) => {
     <div className="App">
       <Notification />
       <Router>
+        <Navbar />
         <Switch>
           <ProtectedRoute path='/home' component={Blogs} />
+          <ProtectedRoute path='/setting' component={Setting} />
           <Route path='/login' render={(history) => <div>
             <LoginForm history={history} />
           </div>} />
