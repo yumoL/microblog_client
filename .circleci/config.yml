@@ -1,6 +1,4 @@
 version: 2.1
-# orbs:
-#   dockerhub: circleci/docker@0.5.20
 jobs:
   test_client:
     docker:
@@ -17,7 +15,7 @@ jobs:
           paths:
             - ./node_modules
       - run: npm test
-  
+      
 workflows:
   test:
     jobs:
