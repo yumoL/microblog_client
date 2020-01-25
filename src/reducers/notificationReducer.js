@@ -9,7 +9,7 @@ const notificationReducer = (state = {}, action) => {
   }
 }
 
-export const setNotification = ({ message, error = false }) => {
+export const setNotification = ({ message, error = false, timeout=5000 }) => {
   const content = {
     message,
     error
@@ -23,7 +23,7 @@ export const setNotification = ({ message, error = false }) => {
       dispatch({
         type: 'CLEAR_NOTIFICATION'
       })
-    }, 5000)
+    }, timeout)
   }
 }
 
