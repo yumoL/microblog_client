@@ -75,22 +75,6 @@ Object {
                     />
                   </div>
                 </div>
-                <div
-                  class="ui label"
-                >
-                  Upload Your Head Portrait
-                </div>
-                <div
-                  class="field"
-                >
-                  <div
-                    class="ui input"
-                  >
-                    <input
-                      type="file"
-                    />
-                  </div>
-                </div>
                 <button
                   class="ui teal large fluid disabled button"
                   disabled=""
@@ -183,22 +167,6 @@ Object {
                     required=""
                     type="password"
                     value=""
-                  />
-                </div>
-              </div>
-              <div
-                class="ui label"
-              >
-                Upload Your Head Portrait
-              </div>
-              <div
-                class="field"
-              >
-                <div
-                  class="ui input"
-                >
-                  <input
-                    type="file"
                   />
                 </div>
               </div>
