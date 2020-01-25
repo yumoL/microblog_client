@@ -3,7 +3,7 @@
  */
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { Grid, Header, Form, Segment, Button, Label, Message } from 'semantic-ui-react'
+import { Grid, Header, Form, Segment, Button, Message } from 'semantic-ui-react'
 import { Link, withRouter, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { checkUserNameExisted, register } from '../reducers/userReducer'
@@ -12,6 +12,7 @@ import { useField } from '../hooks/useField'
 import { setNotification } from '../reducers/notificationReducer'
 import ValidateInput from './ValidateInput'
 import RedirectToMain from './RedirectToMain'
+import { uploadFile } from '../reducers/fileReducer'
 
 const RegisterForm = props => {
   const [registerSuccess, setRegisterSuccess] = useState(false)
@@ -46,7 +47,6 @@ const RegisterForm = props => {
     } catch (e) {
       props.setNotification({ message: 'Register failed', error: true })
     }
-
   }
 
   if (registerSuccess) {
@@ -96,8 +96,6 @@ const RegisterForm = props => {
               />
               <ValidateInput fieldName={'Password confirmation'} input={passwordConfirm.value}
                 extraRequirement={password.value === passwordConfirm.value} extraErrorMessage={'Confirmation does not match the password'} />
-              <Label>Upload Your Head Portrait</Label>
-              <Form.Input type='file' />
               <Button color='teal' fluid size='large' disabled={submitButtonDisabled}>
                 Sign Up
               </Button>
@@ -113,14 +111,16 @@ const RegisterForm = props => {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    file: state.file
   }
 }
 
 const mapDispatchToProps = {
   checkUserNameExisted,
   register,
-  setNotification
+  setNotification,
+  uploadFile
 }
 
 RegisterForm.propTypes = {
