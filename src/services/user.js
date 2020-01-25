@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getConfig } from '../services/blogs'
 const baseUrl = '/api/user'
 
 // res.data = ctx.body of backend
@@ -18,9 +19,22 @@ const login = async user => {
   return res.data
 }
 
+const changeBasicInfo = async (id, userToUpdate) => {
+  const res = await axios.patch(`${baseUrl}/changeInfo/${id}`, userToUpdate, getConfig())
+  console.log('returnUser', res.data)
+  return res.data
+}
+
+const changePwd = async (id, userToUpdate) => {
+  const res =await axios.patch(`${baseUrl}/changePwd/${id}`, userToUpdate, getConfig())
+  return res.data
+}
+
 export default {
   checkUserNameExisted,
   register,
-  login
+  login,
+  changeBasicInfo,
+  changePwd
 }
 

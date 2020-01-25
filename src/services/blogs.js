@@ -3,7 +3,7 @@
 
 let token = null
 
-const getConfig = () => ({
+export const getConfig = () => ({
   headers: { Authorization: token }
 })
 
@@ -15,4 +15,4 @@ const destroyToken = () => {
   token = null
 }
 
-export default { getConfig, setToken, destroyToken }
+export default { setToken, destroyToken }
