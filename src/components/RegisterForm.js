@@ -12,7 +12,7 @@ import { useField } from '../hooks/useField'
 import { setNotification } from '../reducers/notificationReducer'
 import ValidateInput from './ValidateInput'
 import RedirectToMain from './RedirectToMain'
-import { uploadFile } from '../reducers/fileReducer'
+
 
 const RegisterForm = props => {
   const [registerSuccess, setRegisterSuccess] = useState(false)
@@ -119,8 +119,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
   checkUserNameExisted,
   register,
-  setNotification,
-  uploadFile
+  setNotification
 }
 
 RegisterForm.propTypes = {

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getConfig } from '../services/blogs'
+import { getConfig } from '../services/utils'
 const baseUrl = '/api/user'
 
 // res.data = ctx.body of backend

@@ -7,7 +7,7 @@ import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import Notification from './components/Notification'
 import { initUser } from './reducers/userReducer'
-import Blogs from './components/Blogs'
+import FrontPage from './components/FrontPage'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFoundPage from './components/NotFoundPage'
 import Navbar from './components/Navbar'
@@ -27,7 +27,7 @@ const App = (props) => {
       <Router>
         <Navbar />
         <Switch>
-          <ProtectedRoute path='/home' component={Blogs} />
+          <ProtectedRoute path='/home' component={FrontPage} />
           <ProtectedRoute path='/setting' component={Setting} />
           <Route path='/login' render={(history) => <div>
             <LoginForm history={history} />

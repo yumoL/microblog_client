@@ -78,7 +78,7 @@ const Setting = props => {
         <Form onSubmit={handleBasicInfoChange}>
           <Form.Field>
             <label>User name</label>
-            <input {...userName}/>
+            <input {...userName} clear='clear'/>
             <ValidateInput fieldName={'Username'} input={userName.value} minLength={3} maxLength={255}
               extraRequirement={!props.user.userNameExisted || userName.value===props.user.userName} extraErrorMessage={'User name is already existed'} />
           </Form.Field>
@@ -97,17 +97,17 @@ const Setting = props => {
         <Form onSubmit={handlePwdChange}>
           <Form.Field>
             <label>Current password</label>
-            <input placeholder='current password' {...oldPwd}/>
+            <input placeholder='current password' {...oldPwd} clear='clear'/>
           </Form.Field>
 
           <Form.Field>
             <label>New password</label>
-            <input placeholder='new password' {...newPwd}/>
+            <input placeholder='new password' {...newPwd} clear='clear' />
             <ValidateInput fieldName={'Password'} input={newPwd.value} minLength={3} maxLength={255} />
           </Form.Field>
           <Form.Field>
             <label>Confirm new password</label>
-            <input placeholder='new password confirmation' {...newPwdConfirm}/>
+            <input placeholder='new password confirmation' {...newPwdConfirm} clear='clear'/>
           </Form.Field>
           <ValidateInput fieldName={'Password confirmation'} input={newPwdConfirm.value}
             extraRequirement={newPwd.value === newPwdConfirm.value} extraErrorMessage={'Confirmation does not match the password'} />

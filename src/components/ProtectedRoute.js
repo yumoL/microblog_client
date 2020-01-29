@@ -31,7 +31,7 @@ const mapStateToProps = (state) => {
 
 ProtectedRoute.propTypes = {
   user: PropTypes.object.isRequired,
-  component: PropTypes.func.isRequired,
+  component: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired
 }
 

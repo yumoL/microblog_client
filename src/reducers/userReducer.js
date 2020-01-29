@@ -1,5 +1,4 @@
 import userService from '../services/user'
-import blogService from '../services/blogs'
 import utilService from '../services/utils'
 
 export const lsKey = 'loggedInUser'
@@ -27,7 +26,7 @@ const userReducer = (state = initialState, action) => {
 
 const storeUserToLocalStorage = user => {
   window.localStorage.setItem(lsKey, JSON.stringify(user))
-  blogService.setToken(user.token)
+  utilService.setToken(user.token)
 }
 
 export const initUser = () => {
@@ -35,7 +34,7 @@ export const initUser = () => {
     const loggedInUserJson = window.localStorage.getItem(lsKey)
     if (loggedInUserJson) {
       const loggedInUser = JSON.parse(loggedInUserJson)
-      blogService.setToken(loggedInUser.token)
+      utilService.setToken(loggedInUser.token)
       dispatch({
         type: 'SET_USER',
         loggedInUser
@@ -78,7 +77,7 @@ export const login = user => {
 
 export const logout = () => {
   return async dispatch => {
-    blogService.destroyToken()
+    utilService.destroyToken()
     window.localStorage.removeItem(lsKey)
     dispatch({
       type: 'CLEAR_USER'
@@ -97,10 +96,11 @@ export const changeBasicInfo = (id, newUserName, formData) => {
       /**
      * uploadedPic = {
      *  errno: 0
-     *  data: {url: ...}
+     *  data: [url]
      * }
      */
-      const uploadedUrl = uploadedPic.data.url
+      const uploadedUrl = uploadedPic.data[0] //the first element of data array as we only have one picture here
+      console.log('suc model', uploadedPic.data[0])
       userToUpdate = {
         ...userToUpdate,
         newPicture: uploadedUrl

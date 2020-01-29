@@ -1,6 +1,19 @@
 import axios from 'axios'
-import { getConfig } from '../services/blogs'
 const baseUrl = '/api/utils'
+
+let token = null
+
+export const getConfig = () => ({
+  headers: { Authorization: token }
+})
+
+const setToken = newToken => {
+  token = `bearer ${newToken}`
+}
+
+const destroyToken = () => {
+  token = null
+}
 
 const uploadFile = async formData => {
   const res = await axios.post(`${baseUrl}/upload`, formData, getConfig())
@@ -9,5 +22,7 @@ const uploadFile = async formData => {
 }
 
 export default {
-  uploadFile
+  uploadFile,
+  setToken,
+  destroyToken
 }

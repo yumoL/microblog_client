@@ -4,10 +4,11 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import jwtDecode from 'jwt-decode'
 import userReducer, { lsKey, logout }from './reducers/userReducer'
 import notificationReducer from './reducers/notificationReducer'
-
+import blogReducer from './reducers/blogReducer'
 const reducer = combineReducers({
   user: userReducer,
-  notification: notificationReducer
+  notification: notificationReducer,
+  blog: blogReducer
 })
 //
 const checkTokenExpirationMiddleware = store => next => action => {
