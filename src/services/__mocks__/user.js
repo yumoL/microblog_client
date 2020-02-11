@@ -1,7 +1,9 @@
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlck5hbWUiOiJ1c2VyMSIsInBpY3R1cmUiOiIvZGVmYXVsdGVkX3BpY3R1cmUuanBnIiwiaWF0IjoxNTgxNDIzMjU5LCJleHAiOjE1ODE0MjY4NTl9.L9a29NLCZOINYT04IO2SLHS25ETmYk2GKErvZbdp3w0'
+
 const loggedInUser = {
   errno: 0,
   data: {
-    token: 'fakeToken123',
+    token,
     id: 1,
     userName: 'user1',
     picture: null
