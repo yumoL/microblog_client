@@ -10,9 +10,10 @@ const reducer = combineReducers({
   notification: notificationReducer,
   blog: blogReducer
 })
-//
+
 const checkTokenExpirationMiddleware = store => next => action => {
   const token =
+    localStorage.getItem(lsKey) &&
     JSON.parse(localStorage.getItem(lsKey)) &&
     JSON.parse(localStorage.getItem(lsKey))['token']
   if (token && jwtDecode(token).exp < Date.now() / 1000) {
