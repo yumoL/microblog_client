@@ -25,19 +25,15 @@ const mapStateToProps = (state) => {
   }
 }
 
-// const mapDispatchToProps = {
-//   initUser
-// }
 
 ProtectedRoute.propTypes = {
   user: PropTypes.object.isRequired,
-  component: PropTypes.object.isRequired,
+  component: PropTypes.oneOfType([PropTypes.object, PropTypes.func]).isRequired,
   location: PropTypes.object.isRequired
 }
 
 export default withRouter(
   connect(
     mapStateToProps,
-    //mapDispatchToProps
   )(ProtectedRoute)
 )
