@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
+/* eslint-disable eqeqeq */
+import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Menu, Dropdown, Button } from 'semantic-ui-react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { logout } from '../reducers/userReducer'
 
 const Navbar = props => {
+  const onLogin = props.location.pathname == '/login'
+  const onRegister = props.location.pathname == '/register'
+  const onHome = props.location.pathname == '/home'
+  const onProfile = props.location.pathname.includes('/profile')
+  const onDiscover = props.location.pathname == '/discover'
 
-  const [activeItem, setActiveItem ] = useState(props.user.token ? 'Home': 'Login')
 
-  const handleNavClick = (e, { name }) => {
-    setActiveItem(name)
-  }
   if(!props.user.token) {
     return (
       <Menu tabular>
         <Menu.Item
           name='Login'
-          active={activeItem==='Login'}
-          onClick={handleNavClick}
+          active={onLogin}
           as={Link}
           to='/login'/>
         <Menu.Item
           name='Register'
-          active={activeItem==='Register'}
-          onClick={handleNavClick}
+          active={onRegister}
           as={Link}
           to='/register'/>
       </Menu>
@@ -34,20 +34,17 @@ const Navbar = props => {
     <Menu tabular>
       <Menu.Item
         name='Home'
-        active={activeItem==='Home'}
-        onClick={handleNavClick}
+        active={onHome}
         as={Link}
         to='/home'/>
       <Menu.Item
-        name='My blogs'
-        active={activeItem==='My blogs'}
-        onClick={handleNavClick}
+        name='Profile'
+        active={onProfile}
         as={Link}
-        to='/myblogs'/>
+        to={`/profile/${props.user.id}/0`}/>
       <Menu.Item
         name='Discover'
-        active={activeItem==='Discover'}
-        onClick={handleNavClick}
+        active={onDiscover}
         as={Link}
         to='/discover'/>
       <Menu.Menu
@@ -81,10 +78,11 @@ const mapDispatchToProps = {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  user: PropTypes.object
+  user: PropTypes.object,
+  location: PropTypes.object.isRequired
 }
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Navbar)
+)(Navbar))
