@@ -1,17 +1,31 @@
 import React, { useState } from 'react'
-import { Form, TextArea, Button, Grid, Image } from 'semantic-ui-react'
+import { Form, TextArea, Button, Icon, Grid } from 'semantic-ui-react'
 import { useField } from '../../hooks/useField'
 import PropTypes from 'prop-types'
+import SingleImage from './Images/SingleImage'
 
 const BlogInput = props => {
   const [files, setFiles ] = useState([])
-  const [urls, setUrls ] = useState([])
+  const [tempUrls, setTempUrls ] = useState([])
   const content = useField('text')
+  const [id, setId] = useState(0)
 
   const handleFileChange = e => {
-    const fileToAdd = e.target.files[0]
+    if(files.length===3){
+      props.setNotification({ message:'You can upload max 3 images', error:true })
+      return
+    }
+    setId(id+1)
+    const fileToAdd = {
+      fileContent: e.target.files[0],
+      id
+    }
+    const tempUrl = {
+      urlContent: URL.createObjectURL(fileToAdd.fileContent),
+      id
+    }
     setFiles([...files, fileToAdd])
-    setUrls([...urls, URL.createObjectURL(fileToAdd)])
+    setTempUrls([...tempUrls, tempUrl])
   }
 
   const handleSubmit = async e => {
@@ -19,30 +33,42 @@ const BlogInput = props => {
     let formData = null
     if(files.length > 0){
       formData = new FormData()
-      files.map(file => formData.append('file',file))
+      files.map(file => formData.append('file',file.fileContent))
     }
     await props.createBlog(props.userId, content.value, formData )
     setFiles([])
-    setUrls([])
+    setTempUrls([])
+    setId(0)
     content.clear()
     props.setNotification({ message:'You created a blog', error: false })
+  }
+  let imageInput = React.createRef()
+  const insertImageButtonOnClick = () => {
+    imageInput.current.click()
+  }
+
+  const removeImage = id => {
+    setFiles(files.filter(file => file.id!==id))
+    setTempUrls(tempUrls.filter(url => url.id!==id))
   }
   return (
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
-          <TextArea placeholder='new blog...(click Choose Files below to upload max 5 images)' {...content} style={{ minHeight: 100 }} clear='clear'/>
-          <input type='file' accept='image/*' onChange={handleFileChange}/>
-          <Grid>
-            <Grid.Row columns={5}>
-              {urls.map(url => <Grid.Column key={url}>
-                <Image src={url} size='small' />
-              </Grid.Column>)}
-            </Grid.Row>
-
-          </Grid>
+          <TextArea placeholder='new blog...' {...content} style={{ minHeight: 100 }} clear='clear'/>
+          <Button type='button' onClick={insertImageButtonOnClick}><Icon name='picture'/>insert an image (max 3)</Button>
+          <input type='file' accept='image/*' ref={imageInput} onChange={handleFileChange} style={{ 'display':'none' }}/>
         </Form.Field>
-        <Button>Publish your microblog</Button>
+        {files.length>0&&<Grid style={{ height:'33%', width:'33%' }}>
+          {<Grid.Row columns={3} >
+            {tempUrls.map(url => <Grid.Column key={url.id}>
+              {console.log('id', url.id)}
+              <SingleImage image={url.urlContent} toUpload={true}
+                removeImage={() => removeImage(tempUrls.find(tempUrl => tempUrl.urlContent===url.urlContent).id)}/>
+            </Grid.Column>)}
+          </Grid.Row>}
+        </Grid>}
+        <Button color='green'>Publish your microblog</Button>
       </Form>
     </div>
   )
