@@ -5,7 +5,10 @@ import { connect } from 'react-redux'
 import { createBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
-const FrontPage = props => {
+/**
+ * Create new blogs, show user's blogs and blogs of people the user follows
+ */
+const HomePage = props => {
   return (
     <div>
       <BlogInput userId={props.user.id} createBlog={props.createBlog} setNotification={props.setNotification}/>
@@ -25,7 +28,7 @@ const mapDispatchToProps = {
   setNotification
 }
 
-FrontPage.propTypes = {
+HomePage.propTypes = {
   createBlog: PropTypes.func.isRequired,
   setNotification: PropTypes.func.isRequired,
   user: PropTypes.object,
@@ -34,4 +37,4 @@ FrontPage.propTypes = {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(FrontPage)
+)(HomePage)

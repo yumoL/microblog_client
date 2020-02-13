@@ -7,27 +7,29 @@ import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import Notification from './components/Notification'
 import { initUser } from './reducers/userReducer'
-import FrontPage from './components/FrontPage'
+import HomePage from './components/HomePage'
 import ProtectedRoute from './components/ProtectedRoute'
 import NotFoundPage from './components/NotFoundPage'
 import Navbar from './components/Navbar'
 import Setting from './components/Setting'
+import Profile from './components/Profile'
 
 const App = (props) => {
 
   useEffect(() => {
-    console.log('init')
     props.initUser()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
-    <div className="App">
+    <div className="App" style={{ textAlign:'left' }}>
       <Notification />
       <Router>
         <Navbar />
         <Switch>
-          <ProtectedRoute path='/home' component={FrontPage} />
+          <ProtectedRoute path='/home' component={HomePage} />
+          <ProtectedRoute path='/profile/:userId/:pageIndex'
+            component={({ match }) => <Profile userId={match.params.userId}/>} />
           <ProtectedRoute path='/setting' component={Setting} />
           <Route path='/login' render={(history) => <div>
             <LoginForm history={history} />

@@ -6,4 +6,11 @@ const createBlog = async (userId, newBlog ) => {
   const res = await axios.post(`${baseUrl}/create/${userId}`, newBlog, getConfig())
   return res.data
 }
-export default { createBlog  }
+
+const getBlogsByUser = async (userId, pageIndex=0) => {
+  const res = await axios.get(`${baseUrl}/profile/${userId}/${pageIndex}`, getConfig())
+  console.log('service res', res.data)
+  return res.data
+}
+
+export default { createBlog, getBlogsByUser }

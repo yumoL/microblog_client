@@ -5,6 +5,8 @@ const blogReducer = (state={}, action) => {
   switch (action.type) {
   case 'CREATE_BLOG':
     return action.publishedBlog
+  case 'GET_BLOGS_BY_USER':
+    return action.blogList
   default:
     return state
   }
@@ -26,7 +28,6 @@ export const createBlog = (userId, content, formData) => {
      * }
      */
       const urls = uploadedPic.data
-      console.log('suc model', uploadedPic.data[0])
       newBlog = {
         ...newBlog,
         urls
@@ -37,6 +38,18 @@ export const createBlog = (userId, content, formData) => {
     dispatch({
       type: 'CREATE_BLOG',
       publishedBlog
+    })
+  }
+}
+
+export const getBlogsByUser = (userId, pageIndex) => {
+  return async dispatch => {
+    const res = await blogService.getBlogsByUser(userId, pageIndex)
+    const blogList = res.data
+    console.log('blogList', blogList)
+    dispatch({
+      type: 'GET_BLOGS_BY_USER',
+      blogList
     })
   }
 }
