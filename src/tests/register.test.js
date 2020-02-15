@@ -13,9 +13,9 @@ describe('Register', () => {
 
   beforeEach(() => {
     Wrapper = renderWithReduxAndRouter(<RegisterForm />)
-    userNameInput = Wrapper.container.querySelector('.userName').querySelector('input')
-    pwdInput = Wrapper.container.querySelector('.pwd').querySelector('input')
-    pwdConfirmInput = Wrapper.container.querySelector('.pwdConfirm').querySelector('input')
+    userNameInput = Wrapper.container.querySelector('#userName')
+    pwdInput = Wrapper.container.querySelector('#pwd')
+    pwdConfirmInput = Wrapper.container.querySelector('#pwdConfirm')
   })
 
   test('should render register form correctly', () => {

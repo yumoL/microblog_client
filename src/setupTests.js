@@ -9,7 +9,9 @@ const localStorageMock = {
   getItem: (key) => {
     return savedItems[key]
   },
-  clear: savedItems = {}
+  removeItem: (key) => {
+    delete savedItems[key]
+  }
 }
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock })

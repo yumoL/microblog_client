@@ -26,12 +26,13 @@ Object {
                 class="ui stacked segment"
               >
                 <div
-                  class="required field userName"
+                  class="required field"
                 >
                   <div
                     class="ui fluid left icon input"
                   >
                     <input
+                      id="userName"
                       placeholder="User Name"
                       required=""
                       type="text"
@@ -44,12 +45,13 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="required field pwd"
+                  class="required field"
                 >
                   <div
                     class="ui fluid icon input"
                   >
                     <input
+                      id="pwd"
                       placeholder="Password"
                       required=""
                       type="password"
@@ -108,12 +110,13 @@ Object {
               class="ui stacked segment"
             >
               <div
-                class="required field userName"
+                class="required field"
               >
                 <div
                   class="ui fluid left icon input"
                 >
                   <input
+                    id="userName"
                     placeholder="User Name"
                     required=""
                     type="text"
@@ -126,12 +129,13 @@ Object {
                 </div>
               </div>
               <div
-                class="required field pwd"
+                class="required field"
               >
                 <div
                   class="ui fluid icon input"
                 >
                   <input
+                    id="pwd"
                     placeholder="Password"
                     required=""
                     type="password"

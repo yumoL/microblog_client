@@ -49,9 +49,9 @@ const LoginForm = props => {
           </Header>
           <Form size='large' onSubmit={handleSubmit}>
             <Segment stacked>
-              <Form.Input className='userName' fluid icon='user' iconPosition='left' placeholder='User Name' {...userName} required />
+              <Form.Input id='userName' fluid icon='user' iconPosition='left' placeholder='User Name' {...userName} required />
               <Form.Input
-                className='pwd'
+                id='pwd'
                 fluid
                 icon='lock'
                 placeholder='Password'

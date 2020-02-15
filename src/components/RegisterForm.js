@@ -72,13 +72,13 @@ const RegisterForm = props => {
           </Header>
           <Form size='large' onSubmit={handleSubmit}>
             <Segment stacked>
-              <Form.Input className='userName' fluid icon='user' iconPosition='left' placeholder='Username (between 3 and 255 characters)'
+              <Form.Input id='userName' fluid icon='user' iconPosition='left' placeholder='Username (between 3 and 255 characters)'
                 {...userName} required
               />
               <ValidateInput fieldName={'Username'} input={userName.value} minLength={3} maxLength={255}
                 extraRequirement={!props.user.userNameExisted} extraErrorMessage={'User name is already existed'} />
               <Form.Input
-                className='pwd'
+                id='pwd'
                 fluid
                 icon='lock'
                 iconPosition='left'
@@ -88,7 +88,7 @@ const RegisterForm = props => {
               />
               <ValidateInput fieldName={'Password'} input={password.value} minLength={3} maxLength={255} />
               <Form.Input
-                className='pwdConfirm'
+                id='pwdConfirm'
                 fluid
                 placeholder='Confirm Your Password'
                 {...passwordConfirm}

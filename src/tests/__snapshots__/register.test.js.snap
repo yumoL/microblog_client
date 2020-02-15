@@ -26,12 +26,13 @@ Object {
                 class="ui stacked segment"
               >
                 <div
-                  class="required field userName"
+                  class="required field"
                 >
                   <div
                     class="ui fluid left icon input"
                   >
                     <input
+                      id="userName"
                       placeholder="Username (between 3 and 255 characters)"
                       required=""
                       type="text"
@@ -44,12 +45,13 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="required field pwd"
+                  class="required field"
                 >
                   <div
                     class="ui fluid left icon input"
                   >
                     <input
+                      id="pwd"
                       placeholder="Password (between 3 and 255 characters)"
                       required=""
                       type="password"
@@ -62,12 +64,13 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="required field pwdConfirm"
+                  class="required field"
                 >
                   <div
                     class="ui fluid input"
                   >
                     <input
+                      id="pwdConfirm"
                       placeholder="Confirm Your Password"
                       required=""
                       type="password"
@@ -121,12 +124,13 @@ Object {
               class="ui stacked segment"
             >
               <div
-                class="required field userName"
+                class="required field"
               >
                 <div
                   class="ui fluid left icon input"
                 >
                   <input
+                    id="userName"
                     placeholder="Username (between 3 and 255 characters)"
                     required=""
                     type="text"
@@ -139,12 +143,13 @@ Object {
                 </div>
               </div>
               <div
-                class="required field pwd"
+                class="required field"
               >
                 <div
                   class="ui fluid left icon input"
                 >
                   <input
+                    id="pwd"
                     placeholder="Password (between 3 and 255 characters)"
                     required=""
                     type="password"
@@ -157,12 +162,13 @@ Object {
                 </div>
               </div>
               <div
-                class="required field pwdConfirm"
+                class="required field"
               >
                 <div
                   class="ui fluid input"
                 >
                   <input
+                    id="pwdConfirm"
                     placeholder="Confirm Your Password"
                     required=""
                     type="password"
