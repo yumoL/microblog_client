@@ -67,7 +67,7 @@ const RegisterForm = props => {
     <div>
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header id='signUp' as='h2' color='teal' textAlign='center'>
             Sign Up
           </Header>
           <Form size='large' onSubmit={handleSubmit}>
@@ -96,7 +96,7 @@ const RegisterForm = props => {
               />
               <ValidateInput fieldName={'Password confirmation'} input={passwordConfirm.value}
                 extraRequirement={password.value === passwordConfirm.value} extraErrorMessage={'Confirmation does not match the password'} />
-              <Button color='teal' fluid size='large' disabled={submitButtonDisabled}>
+              <Button id='register' color='teal' fluid size='large' disabled={submitButtonDisabled}>
                 Sign Up
               </Button>
             </Segment>

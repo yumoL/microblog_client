@@ -18,11 +18,13 @@ const Navbar = props => {
     return (
       <Menu tabular>
         <Menu.Item
+          id='loginMenu'
           name='Login'
           active={onLogin}
           as={Link}
           to='/login'/>
         <Menu.Item
+          id='registerMenu'
           name='Register'
           active={onRegister}
           as={Link}
