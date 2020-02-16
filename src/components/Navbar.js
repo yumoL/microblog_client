@@ -35,6 +35,7 @@ const Navbar = props => {
   return (
     <Menu tabular>
       <Menu.Item
+        id='homeMenu'
         name='Home'
         active={onHome}
         as={Link}

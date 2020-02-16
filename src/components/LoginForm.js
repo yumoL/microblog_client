@@ -44,7 +44,7 @@ const LoginForm = props => {
     <div>
       <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
+          <Header id='loginHeader' as='h2' color='teal' textAlign='center'>
             Log in to your account
           </Header>
           <Form size='large' onSubmit={handleSubmit}>
@@ -58,7 +58,7 @@ const LoginForm = props => {
                 {...password}
                 required
               />
-              <Button type='submit' color='teal' fluid size='large' disabled={loginButtonDisabled}>
+              <Button id='loginButton' type='submit' color='teal' fluid size='large' disabled={loginButtonDisabled}>
                 Login
               </Button>
             </Segment>
