@@ -53,14 +53,15 @@ const Navbar = props => {
       <Menu.Menu
         position='right'
       >
-        <Dropdown item text='Setting'>
+        <Dropdown id='settingDropdown' item text='Setting'>
           <Dropdown.Menu>
             <Dropdown.Item
+              id='accountSettingItem'
               as={Link} to='/setting'>
               Account setting
             </Dropdown.Item>
             <Dropdown.Item>
-              <Button onClick={props.logout}><Link to='/login'>Logout</Link></Button>
+              <Button id='logoutButton' onClick={props.logout}><Link to='/login'>Logout</Link></Button>
             </Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
