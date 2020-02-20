@@ -28,6 +28,13 @@ Register succeeded
   Click Button  ${SIGN_UP_BUTTON}
   Wait Until Page Contains  Register succeeded
   Page Should Contain  Log in to your account
+
 Display errors
   [Arguments]  ${ERROR}
   Wait Until Page Contains  ${ERROR}
+
+Register new user successfully
+  [Arguments]  ${USERNAME}  ${PWD}
+  Go to register page
+  Start register  ${USERNAME}  ${PWD}  ${PWD}
+  Register succeeded
