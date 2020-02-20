@@ -13,6 +13,7 @@ import NotFoundPage from './components/NotFoundPage'
 import Navbar from './components/Navbar'
 import Setting from './components/Setting'
 import Profile from './components/Profile'
+import FrontPage from './components/FrontPage'
 
 const App = (props) => {
 
@@ -31,6 +32,7 @@ const App = (props) => {
           <ProtectedRoute path='/profile/:userId/:pageIndex'
             component={({ match }) => <Profile userId={match.params.userId}/>} />
           <ProtectedRoute path='/setting' component={Setting} />
+          <Route exact path='/' render={() => <FrontPage />} />
           <Route path='/login' render={(history) => <div>
             <LoginForm history={history} />
           </div>} />
