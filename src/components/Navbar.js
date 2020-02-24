@@ -41,6 +41,7 @@ const Navbar = props => {
         as={Link}
         to='/home'/>
       <Menu.Item
+        id='profileMenu'
         name='Profile'
         active={onProfile}
         as={Link}

@@ -6,7 +6,7 @@ const SingleImage = ({ image, toUpload, removeImage }) => {
   if(!image)return null
 
   return(
-    <div>
+    <div id='image'>
       <Modal key={image} trigger={<Image src={image} size="medium" />}>
         <Modal.Content image>
           <Image wrapped src={image} />

@@ -9,6 +9,11 @@ const checkUserNameExisted = async userName => {
   return res.data
 }
 
+const getUserInfo = async id => {
+  const res = await axios.get(`${baseUrl}/${id}`, getConfig())
+  return res.data
+}
+
 const register = async newUser => {
   const res = await axios.post(`${baseUrl}/register`, newUser)
   return res.data
@@ -21,7 +26,6 @@ const login = async user => {
 
 const changeBasicInfo = async (id, userToUpdate) => {
   const res = await axios.patch(`${baseUrl}/changeInfo/${id}`, userToUpdate, getConfig())
-  console.log('returnUser', res.data)
   return res.data
 }
 
@@ -35,6 +39,7 @@ export default {
   register,
   login,
   changeBasicInfo,
-  changePwd
+  changePwd,
+  getUserInfo
 }
 

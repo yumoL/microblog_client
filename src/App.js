@@ -30,7 +30,7 @@ const App = (props) => {
         <Switch>
           <ProtectedRoute path='/home' component={HomePage} />
           <ProtectedRoute path='/profile/:userId/:pageIndex'
-            component={({ match }) => <Profile userId={match.params.userId}/>} />
+            component={({ match }) => <Profile userId={match.params.userId} isMe={props.user.id===Number(match.params.userId)}/>} />
           <ProtectedRoute path='/setting' component={Setting} />
           <Route exact path='/' render={() => <FrontPage />} />
           <Route path='/login' render={(history) => <div>
@@ -57,6 +57,7 @@ const mapDispatchToProps = {
 }
 
 App.propTypes = {
+  user: PropTypes.object,
   initUser: PropTypes.func.isRequired
 }
 

@@ -5,10 +5,13 @@ import jwtDecode from 'jwt-decode'
 import userReducer, { lsKey, logout }from './reducers/userReducer'
 import notificationReducer from './reducers/notificationReducer'
 import blogReducer from './reducers/blogReducer'
+import usersReducer from './reducers/usersReducer'
+
 const reducer = combineReducers({
   user: userReducer,
   notification: notificationReducer,
-  blog: blogReducer
+  blog: blogReducer,
+  users: usersReducer
 })
 
 const checkTokenExpirationMiddleware = store => next => action => {

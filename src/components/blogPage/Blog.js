@@ -15,7 +15,7 @@ const Blog = ({ blog }) => {
         </Comment.Author>
         <Comment.Content>
           <Comment.Metadata>
-            <div>2019.1.1 19:00</div>
+            <div>{blog.createdAt}</div>
           </Comment.Metadata>
           <Comment.Text>
             {blog.content}

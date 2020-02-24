@@ -55,20 +55,19 @@ const BlogInput = props => {
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Field>
-          <TextArea placeholder='new blog...' {...content} style={{ minHeight: 100 }} clear='clear'/>
-          <Button type='button' onClick={insertImageButtonOnClick}><Icon name='picture'/>insert an image (max 3)</Button>
-          <input type='file' accept='image/*' ref={imageInput} onChange={handleFileChange} style={{ 'display':'none' }}/>
+          <TextArea id='blogTextField' placeholder='new blog...' {...content} style={{ minHeight: 100 }} clear='clear'/>
+          <Button id='insertImageButton' type='button' onClick={insertImageButtonOnClick}><Icon name='picture'/>insert an image (max 3)</Button>
+          <input id='fileInput' type='file' accept='image/*' ref={imageInput} onChange={handleFileChange} style={{ 'display':'none' }}/>
         </Form.Field>
         {files.length>0&&<Grid style={{ height:'33%', width:'33%' }}>
           {<Grid.Row columns={3} >
             {tempUrls.map(url => <Grid.Column key={url.id}>
-              {console.log('id', url.id)}
               <SingleImage image={url.urlContent} toUpload={true}
                 removeImage={() => removeImage(tempUrls.find(tempUrl => tempUrl.urlContent===url.urlContent).id)}/>
             </Grid.Column>)}
           </Grid.Row>}
         </Grid>}
-        <Button color='green'>Publish your microblog</Button>
+        <Button id='publishBlogButton' color='green'>Publish your microblog</Button>
       </Form>
     </div>
   )

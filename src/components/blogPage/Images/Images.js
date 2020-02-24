@@ -18,8 +18,7 @@ const Images = props => {
 }
 
 Images.propTypes = {
-  images: PropTypes.array.isRequired,
-  toUpload: PropTypes
+  images: PropTypes.array.isRequired
 }
 
 export default Images
