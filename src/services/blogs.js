@@ -9,7 +9,6 @@ const createBlog = async (userId, newBlog ) => {
 
 const getBlogsByUser = async (userId, pageIndex=0) => {
   const res = await axios.get(`${baseUrl}/profile/${userId}/${pageIndex}`, getConfig())
-  console.log('service res', res.data)
   return res.data
 }
 

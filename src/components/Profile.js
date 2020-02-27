@@ -2,10 +2,11 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Divider, Segment } from 'semantic-ui-react'
-import { getBlogsByUser } from '../reducers/blogReducer'
+import { getBlogsByUser, clearBlogList } from '../reducers/blogReducer'
 import { getUserInfo } from '../reducers/usersReducer'
 import BlogList from './blogPage/BlogList'
 import { Image } from 'semantic-ui-react'
+import PageDivider from './blogPage/PageDivider'
 
 const Profile = (props) => {
   const { userId, isMe } = props
@@ -21,6 +22,8 @@ const Profile = (props) => {
   useEffect(() => {
     getBlogs()
     getAnotherUserInfo()
+    return () => props.clearBlogList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userId])
 
   if(!props.blog.blogList)return null
@@ -34,6 +37,7 @@ const Profile = (props) => {
         </div>):(
           <BlogList blogList={props.blog.blogList}/>
         ) }
+        <PageDivider noMore={props.blog.blogList.length===props.blog.allNumber} userId={props.users.id} getBlogsByUser={props.getBlogsByUser} />
       </div>
       <div style={{ float:'right' }}>
         <div> <span>
@@ -56,7 +60,6 @@ const Profile = (props) => {
           </Segment>
         </Segment.Group>
       </div>
-
     </div>
   )
 
@@ -72,7 +75,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
   getBlogsByUser,
-  getUserInfo
+  getUserInfo,
+  clearBlogList
 }
 Profile.propTypes = {
   getBlogsByUser: PropTypes.func.isRequired,
@@ -81,7 +85,8 @@ Profile.propTypes = {
   userId: PropTypes.string.isRequired,
   isMe: PropTypes.bool,
   getUserInfo: PropTypes.func,
-  users: PropTypes.object
+  users: PropTypes.object,
+  clearBlogList: PropTypes.func.isRequired
 }
 export default connect(
   mapStateToProps,

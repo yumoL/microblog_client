@@ -1,12 +1,22 @@
 import blogService from '../services/blogs'
 import utilService from '../services/utils'
 
-const blogReducer = (state={}, action) => {
+const initialState = {
+  allNumber: 0,
+  blogList: []
+}
+
+const blogReducer = (state=initialState, action) => {
   switch (action.type) {
   case 'CREATE_BLOG':
-    return action.publishedBlog
+    return state
+    //return { ...state, allNumber:state.allNumber+1,blogList:state.blogList.concat(action.publishedBlog) }
   case 'GET_BLOGS_BY_USER':
-    return action.blogList
+    return { ...state, allNumber:action.allNumber,blogList:state.blogList.concat(action.blogList) }
+  case 'CLEAR_USER':
+    return initialState
+  case 'CLEAR_BLOG_LIST':
+    return initialState
   default:
     return state
   }
@@ -45,13 +55,21 @@ export const createBlog = (userId, content, formData) => {
 export const getBlogsByUser = (userId, pageIndex) => {
   return async dispatch => {
     const res = await blogService.getBlogsByUser(userId, pageIndex)
-    const blogList = res.data
+    const blogList = res.data.blogList
     console.log('blogList', blogList)
     dispatch({
       type: 'GET_BLOGS_BY_USER',
-      blogList
+      allNumber: res.data.allNumber,
+      blogList: res.data.blogList
     })
   }
 }
 
+export const clearBlogList = () => {
+  return dispatch => {
+    dispatch({
+      type:'CLEAR_BLOG_LIST'
+    })
+  }
+}
 export default blogReducer
