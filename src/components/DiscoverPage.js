@@ -1,7 +1,7 @@
 /**
  * @description show blogs of all users
  */
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Divider } from 'semantic-ui-react'
@@ -48,16 +48,11 @@ const mapDispatchToProps = {
   getAllBlogs,
   clearBlogList
 }
-// Profile.propTypes = {
-//   getBlogsByUser: PropTypes.func.isRequired,
-//   user: PropTypes.object,
-//   blog: PropTypes.object,
-//   userId: PropTypes.string.isRequired,
-//   isMe: PropTypes.bool,
-//   getUserInfo: PropTypes.func,
-//   users: PropTypes.object,
-//   clearBlogList: PropTypes.func.isRequired
-// }
+DiscoverPage.propTypes = {
+  getAllBlogs: PropTypes.func.isRequired,
+  blog: PropTypes.object.isRequired,
+  clearBlogList: PropTypes.func.isRequired
+}
 export default connect(
   mapStateToProps,
   mapDispatchToProps
