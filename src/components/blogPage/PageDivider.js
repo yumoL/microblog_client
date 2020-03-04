@@ -3,13 +3,17 @@ import { Button, Divider } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 
 const PageDivider = props => {
-  const { userId, getBlogsByUser, noMore } = props
+  const { userId, getBlogsByUser, noMore, getAllBlogs } = props
   const [pageIndex, setPageIndex ] = useState(1)
 
   const handleLoadMore = () => {
-    console.log('more', pageIndex)
     setPageIndex(pageIndex+1)
-    getBlogsByUser(userId, pageIndex)
+    if(userId){
+      getBlogsByUser(userId, pageIndex)
+    } else {
+      getAllBlogs(pageIndex)
+    }
+
   }
   if(noMore === true){
     return (
@@ -29,8 +33,9 @@ const PageDivider = props => {
 }
 
 PageDivider.propTypes = {
-  getBlogsByUser: PropTypes.func.isRequired,
-  userId: PropTypes.string.isRequired,
+  getBlogsByUser: PropTypes.func,
+  getAllBlogs: PropTypes.func,
+  userId: PropTypes.string,
   noMore: PropTypes.bool.isRequired
 }
 

@@ -12,4 +12,9 @@ const getBlogsByUser = async (userId, pageIndex=0) => {
   return res.data
 }
 
-export default { createBlog, getBlogsByUser }
+const getAllBlogs = async (pageIndex=0) => {
+  const res = await axios.get(`${baseUrl}/discover/${pageIndex}`, getConfig())
+  return res.data
+}
+
+export default { createBlog, getBlogsByUser, getAllBlogs }

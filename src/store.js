@@ -20,8 +20,8 @@ const checkTokenExpirationMiddleware = store => next => action => {
     JSON.parse(localStorage.getItem(lsKey)) &&
     JSON.parse(localStorage.getItem(lsKey))['token']
   if (token && jwtDecode(token).exp < Date.now() / 1000) {
-    store.dispatch(logout())
     window.alert('Your session expired, please login again')
+    store.dispatch(logout())
   }
   next(action)
 }

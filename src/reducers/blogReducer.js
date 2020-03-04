@@ -13,6 +13,8 @@ const blogReducer = (state=initialState, action) => {
     //return { ...state, allNumber:state.allNumber+1,blogList:state.blogList.concat(action.publishedBlog) }
   case 'GET_BLOGS_BY_USER':
     return { ...state, allNumber:action.allNumber,blogList:state.blogList.concat(action.blogList) }
+  case 'GET_ALL_BLOGS':
+    return { ...state, allNumber:action.allNumber,blogList:state.blogList.concat(action.blogList) }
   case 'CLEAR_USER':
     return initialState
   case 'CLEAR_BLOG_LIST':
@@ -55,10 +57,19 @@ export const createBlog = (userId, content, formData) => {
 export const getBlogsByUser = (userId, pageIndex) => {
   return async dispatch => {
     const res = await blogService.getBlogsByUser(userId, pageIndex)
-    const blogList = res.data.blogList
-    console.log('blogList', blogList)
     dispatch({
       type: 'GET_BLOGS_BY_USER',
+      allNumber: res.data.allNumber,
+      blogList: res.data.blogList
+    })
+  }
+}
+
+export const getAllBlogs = (pageIndex) => {
+  return async dispatch => {
+    const res = await blogService.getAllBlogs(pageIndex)
+    dispatch({
+      type: 'GET_ALL_BLOGS',
       allNumber: res.data.allNumber,
       blogList: res.data.blogList
     })

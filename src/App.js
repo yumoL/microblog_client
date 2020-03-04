@@ -14,6 +14,7 @@ import Navbar from './components/Navbar'
 import Setting from './components/Setting'
 import Profile from './components/Profile'
 import FrontPage from './components/FrontPage'
+import DiscoverPage from './components/DiscoverPage'
 
 const App = (props) => {
 
@@ -32,6 +33,7 @@ const App = (props) => {
           <ProtectedRoute path='/profile/:userId/:pageIndex'
             component={({ match }) => <Profile userId={match.params.userId} isMe={props.user.id===Number(match.params.userId)}/>} />
           <ProtectedRoute path='/setting' component={Setting} />
+          <ProtectedRoute path='/discover' component={DiscoverPage}/>
           <Route exact path='/' render={() => <FrontPage />} />
           <Route path='/login' render={(history) => <div>
             <LoginForm history={history} />
