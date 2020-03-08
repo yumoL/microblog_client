@@ -6,7 +6,7 @@ import { createBlog } from '../reducers/blogReducer'
 import { setNotification } from '../reducers/notificationReducer'
 
 /**
- * Create new blogs, show user's blogs and blogs of people the user follows
+ * Create new blogs
  */
 const HomePage = props => {
   return (

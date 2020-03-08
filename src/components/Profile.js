@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { Divider, Segment } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react'
 import { getBlogsByUser, clearBlogList } from '../reducers/blogReducer'
 import { getUserInfo } from '../reducers/usersReducer'
 import BlogList from './blogPage/BlogList'
@@ -44,21 +44,6 @@ const Profile = (props) => {
           <Image src={props.users.picture} verticalAlign='middle' size='tiny'/>
           <h2 style={{ display:'inline' }}>{isMe ? <span>Me</span> : <span>{props.users.userName}</span>}</h2>
         </span></div>
-        <Segment.Group compact>
-          {isMe && <Segment>
-            @Me ()
-          </Segment>}
-          <Segment>
-            <h3>Follower</h3>
-            <p>follower1</p>
-            <p>follower2</p>
-          </Segment>
-          <Segment>
-            <h3>Follow</h3>
-            <p>aaa</p>
-            <p>bbb</p>
-          </Segment>
-        </Segment.Group>
       </div>
     </div>
   )
