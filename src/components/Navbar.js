@@ -47,6 +47,7 @@ const Navbar = props => {
         as={Link}
         to={`/profile/${props.user.id}/0`}/>
       <Menu.Item
+        id='discoverMenu'
         name='Discover'
         active={onDiscover}
         as={Link}
