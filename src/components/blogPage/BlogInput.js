@@ -30,6 +30,11 @@ const BlogInput = props => {
 
   const handleSubmit = async e => {
     e.preventDefault()
+    if(content.value.trim().length===0 && files.length===0){
+      props.setNotification({ message:'Cannot post an empty blog', error:true })
+      return
+
+    }
     let formData = null
     if(files.length > 0){
       formData = new FormData()
