@@ -16,6 +16,7 @@ Object {
           >
             <h2
               class="ui teal center aligned header"
+              id="loginHeader"
             >
               Log in to your account
             </h2>
@@ -66,6 +67,7 @@ Object {
                 <button
                   class="ui teal large fluid disabled button"
                   disabled=""
+                  id="loginButton"
                   tabindex="-1"
                   type="submit"
                 >
@@ -100,6 +102,7 @@ Object {
         >
           <h2
             class="ui teal center aligned header"
+            id="loginHeader"
           >
             Log in to your account
           </h2>
@@ -150,6 +153,7 @@ Object {
               <button
                 class="ui teal large fluid disabled button"
                 disabled=""
+                id="loginButton"
                 tabindex="-1"
                 type="submit"
               >
