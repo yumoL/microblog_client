@@ -1,4 +1,4 @@
-# Microblog
+# Microblog (frontend)
 This is the frontend of the microblog application.
 
 ### For development
